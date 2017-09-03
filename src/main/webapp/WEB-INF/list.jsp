@@ -76,25 +76,28 @@
 							<td colspan="4" align="center">
 							共 ${pageBean.totalCount } 条纪录&nbsp;当前 ${pageBean.currentPage } /
 								${pageBean.totalPage }页&nbsp;&nbsp; 
-								<a href="servlet/IndexServlet?currentPage=1">首页</a> <!-- 上一页判断 -->
+								<a href="servlet/IndexServlet?currentPage=1">首页</a>
+								 <!-- 上一页判断 -->
 								<c:choose>
 									<c:when test="${pageBean.currentPage == 1 }">
 										<a disabled="disabled">上一页</a>
 									</c:when>
 									<c:otherwise>
-										<a
-											href="servlet/IndexServlet?currentPage=${pageBean.currentPage-1 }">上一页</a>
+										<a href="servlet/IndexServlet?currentPage=${pageBean.currentPage-1 }">上一页</a>
 									</c:otherwise>
-								</c:choose> <!-- 下一页判断 --> <c:choose>
+								</c:choose>
+								<!-- 页码 --> 
+								
+								<!-- 下一页判断 --> 
+								<c:choose>
 									<c:when test="${pageBean.currentPage == pageBean.totalPage }">
 										<a disabled="disabled">下一页</a>
 									</c:when>
 									<c:otherwise>
-										<a
-											href="servlet/IndexServlet?currentPage=${pageBean.currentPage+1 }">下一页</a>
+										<a href="servlet/IndexServlet?currentPage=${pageBean.currentPage+1 }">下一页</a>
 									</c:otherwise>
-								</c:choose> <a
-								href="servlet/IndexServlet?currentPage=${pageBean.totalPage }">末页</a>
+								</c:choose> 
+								<a href="servlet/IndexServlet?currentPage=${pageBean.totalPage }">末页</a>
 							</td>
 						</tr>
 						<tr>
