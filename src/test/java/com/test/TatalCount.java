@@ -11,7 +11,7 @@ public class TatalCount {
 		
 		//System.out.println(new UsersServiceImpl().getTotalCount());
 		
-		System.out.println(DataSataic.getStaticData().length());
+		System.out.println(new UsersServiceImpl().getTotalCount());
 	}
 
 }

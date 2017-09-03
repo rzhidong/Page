@@ -17,8 +17,6 @@ import com.util.PageBean;
 import com.vo.Users;
 
 public class IndexServlet extends HttpServlet {
-
-	private IUsersDao usersDao = new UsersDaoImpl();
 	
 	private IUsersService usersService = new UsersServiceImpl();
 
@@ -41,8 +39,6 @@ public class IndexServlet extends HttpServlet {
 
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
-		response.setCharacterEncoding("utf-8");
 
 		try {
 			// 1、获取当前页参数,(第一次访问当前页为null)

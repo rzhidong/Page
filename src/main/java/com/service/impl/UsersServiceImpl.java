@@ -1,5 +1,7 @@
 package com.service.impl;
 
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.util.List;
 
 import org.apache.commons.dbutils.QueryRunner;
@@ -7,6 +9,7 @@ import org.apache.commons.dbutils.handlers.BeanListHandler;
 import org.apache.commons.dbutils.handlers.ScalarHandler;
 
 import com.service.IUsersService;
+import com.util.DBUtil;
 import com.util.JdbcUtil;
 import com.util.PageBean;
 import com.vo.Users;
@@ -60,7 +63,7 @@ public class UsersServiceImpl implements IUsersService {
 			count = runner.query(sql, new ScalarHandler<Long>());
 			
 		} catch (Exception e) {
-			System.out.println("==="+e.getMessage());
+			System.out.println(e.getMessage());
 		}
 		return Integer.parseInt(String.valueOf(count));
 	}

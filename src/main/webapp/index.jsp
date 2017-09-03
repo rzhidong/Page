@@ -29,7 +29,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <body>
   	<div class="container">
   		<span class="h3 text-success">Page</span>
-  		<a href="servlet/QueryServlet?condition=126">QueryServlet</a>
+  		<a href="servlet/QueryServlet?condition=&currentPage=1">QueryServlet</a>
+  		<a href="servlet/IndexServlet">IndexServlet</a>
   	</div>
   </body>
 </html>

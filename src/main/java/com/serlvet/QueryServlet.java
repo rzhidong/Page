@@ -18,8 +18,6 @@ public class QueryServlet extends HttpServlet {
 
 	private IUsersDao usersDao = new UsersDaoImpl();
 
-	private String uri;
-
 	/**
 	 * Constructor of the object.
 	 */
@@ -38,31 +36,28 @@ public class QueryServlet extends HttpServlet {
 
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
-		response.setCharacterEncoding("UTF-8");
 		
 		try {
 			String condition = request.getParameter("condition").trim();
-
-			if ("".equals(condition.trim()) || condition == null) {
-				condition = String.valueOf(126);
+			
+			if (!"".equals(condition)) {
+				condition = "";
 			}
 			
 			// 1、获取当前页参数,(第一次访问当前页为null)
 			String currPage = request.getParameter("currentPage").trim();
-
+			
 			// 判断
 			if (currPage == null || "".equals(currPage.trim())) {
 				// 第一次访问，设置当前页为1
 				currPage = "1";
 			}
-
+			
 			int currentPage = Integer.parseInt(currPage);
-
 			// 2、创建PageBean对象，设置当前页参数，传入service方法参数
 			PageBean<Users> pageBean = new PageBean<Users>();
 			pageBean.setCurrentPage(currentPage);
-
+			
 			// 3、调用service
 			// pageBean 已经被dao填充了数据
 			usersDao.getByCondition(pageBean, condition);
@@ -72,12 +67,13 @@ public class QueryServlet extends HttpServlet {
 
 			request.setAttribute("condition", condition);
 
-			uri = "/WEB-INF/query.jsp";
+			//uri = "/WEB-INF/query.jsp";
+			request.getRequestDispatcher("/WEB-INF/query.jsp").forward(request, response);
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
 
-		request.getRequestDispatcher(uri).forward(request, response);
+		//request.getRequestDispatcher(uri).forward(request, response);
 
 	}
 
